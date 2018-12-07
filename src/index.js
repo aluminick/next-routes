@@ -91,7 +91,7 @@ class Routes {
     const LinkRoutes = props => {
       const {route, params, to, trailingSlash, ...newProps} = props
       const nameOrUrl = route || to
-      
+
       if (nameOrUrl) {
         Object.assign(newProps, this.findAndGetUrls(nameOrUrl, params, trailingSlash).urls)
       }
@@ -153,7 +153,7 @@ class Route {
     const keys = Object.keys(params)
     const qsKeys = keys.filter(key => this.keyNames.indexOf(key) === -1)
 
-    if (!qsKeys.length) return (!trailingSlash)?as: `${as}/`
+    if (!qsKeys.length) return (!trailingSlash) ? as : `${as}/`
 
     const qsParams = qsKeys.reduce((qs, key) => Object.assign(qs, {
       [key]: params[key]
