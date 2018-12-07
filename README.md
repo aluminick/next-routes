@@ -120,6 +120,26 @@ export default () => (
 )
 ```
 
+### `Link` example with trailing slash
+
+```jsx
+// pages/index.js
+import {Link} from '../routes'
+
+export default () => (
+  <div>
+    <div>Welcome to Next.js!</div>
+    <Link trailingSlash={true} route='blog' params={{slug: 'hello-world'}}>
+      <a>Hello world</a>
+    </Link>
+    or
+    <Link trailingSlash={true} route='/blog/hello-world'>
+      <a>Hello world</a>
+    </Link>
+  </div>
+)
+```
+
 API:
 
 - `<Link route='name'>...</Link>`
