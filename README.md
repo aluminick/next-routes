@@ -13,7 +13,7 @@ Easy to use universal dynamic routes for [Next.js](https://github.com/zeit/next.
 Install:
 
 ```bash
-npm install next-routes --save
+npm install wtp-next-routes --save
 ```
 
 Create `routes.js` inside your project:
