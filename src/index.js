@@ -56,11 +56,11 @@ class Routes {
     }, {query, parsedUrl})
   }
 
-  findAndGetUrls (nameOrUrl, params) {
+  findAndGetUrls (nameOrUrl, params, trailingSlash) {
     const route = this.findByName(nameOrUrl)
 
     if (route) {
-      return {route, urls: route.getUrls(params), byName: true}
+      return {route, urls: route.getUrls(params, trailingSlash), byName: true}
     } else {
       const {route, query} = this.match(nameOrUrl)
       const href = route ? route.getHref(query) : nameOrUrl
@@ -89,11 +89,11 @@ class Routes {
 
   getLink (Link) {
     const LinkRoutes = props => {
-      const {route, params, to, ...newProps} = props
+      const {route, params, to, trailingSlash, ...newProps} = props
       const nameOrUrl = route || to
-
+      
       if (nameOrUrl) {
-        Object.assign(newProps, this.findAndGetUrls(nameOrUrl, params).urls)
+        Object.assign(newProps, this.findAndGetUrls(nameOrUrl, params, trailingSlash).urls)
       }
 
       return <Link {...newProps} />
@@ -148,12 +148,12 @@ class Route {
     return `${this.page}?${toQuerystring(params)}`
   }
 
-  getAs (params = {}) {
+  getAs (params = {}, trailingSlash) {
     const as = this.toPath(params) || '/'
     const keys = Object.keys(params)
     const qsKeys = keys.filter(key => this.keyNames.indexOf(key) === -1)
 
-    if (!qsKeys.length) return as
+    if (!qsKeys.length) return (!trailingSlash)?as: `${as}/`
 
     const qsParams = qsKeys.reduce((qs, key) => Object.assign(qs, {
       [key]: params[key]
@@ -162,8 +162,8 @@ class Route {
     return `${as}?${toQuerystring(qsParams)}`
   }
 
-  getUrls (params) {
-    const as = this.getAs(params)
+  getUrls (params, trailingSlash) {
+    const as = this.getAs(params, trailingSlash)
     const href = this.getHref(params)
     return {as, href}
   }
