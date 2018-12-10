@@ -2,7 +2,7 @@
   "name": "wtp-next-routes",
   "version": "1.4.5",
   "description": "Easy to use universal dynamic routes for Next.js",
-  "repository": "fridays/next-routes",
+  "repository": "aluminick/wtp-next-routes",
   "main": "dist",
   "typings": "typings/next-routes.d.ts",
   "files": [
