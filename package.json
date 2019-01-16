@@ -68,5 +68,8 @@
     "router",
     "routes",
     "routing"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
