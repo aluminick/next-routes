@@ -1,4 +1,10 @@
 /* global jest, describe, test, expect */
+
+/**
+ * @todo:
+ * 1. test trailingSlash
+ * 2. test tabIndex
+ */
 import React from 'react'
 import ReactShallowRenderer from 'react-test-renderer/shallow'
 import NextLink from 'next/link'
