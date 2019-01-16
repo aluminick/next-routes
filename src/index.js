@@ -103,7 +103,7 @@ class Routes {
 
   getRouter (Router) {
     const wrap = method => (route, params, options) => {
-      const {trailingSlash} = options
+      const {trailingSlash} = options || {}
       const {byName, urls: {as, href}} = this.findAndGetUrls(route, params, trailingSlash)
       return Router[method](href, as, byName ? options : params)
     }
